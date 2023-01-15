@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.text.Editable;
+import android.text.method.LinkMovementMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Views
     EditText surahNum, ayatNum;
-    TextView quranText;
+    TextView quranText, tvLink;
     Button btnNext, btnPrev;
 
     // handlers
@@ -37,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // new objects
+            // making handlers
         textHandler = new TextHandler(this);
         btnHandler = new BtnHandler(this);
-
+            // other needed objects
         quranArabicText = new QuranArabicText();
         quranHelper = new QDH();
 
@@ -49,16 +51,20 @@ public class MainActivity extends AppCompatActivity {
         quranText = findViewById(R.id.quranText);
         btnNext = findViewById(R.id.btnNext);
         btnPrev = findViewById(R.id.btnPrev);
+        tvLink = findViewById(R.id.tvLink);
 
         // setting event listeners/handlers
         surahNum.addTextChangedListener(textHandler);
         ayatNum.addTextChangedListener(textHandler);
         btnNext.setOnClickListener(btnHandler);
         btnPrev.setOnClickListener(btnHandler);
+
+        // setting movement
+            // hyperlinks
+        tvLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    void fetchAyat()
-    {
+    void fetchAyat() {
         // getting input
         String s = surahNum.getText().toString();
         String a = ayatNum.getText().toString();

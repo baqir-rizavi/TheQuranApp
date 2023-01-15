@@ -11,11 +11,17 @@
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/git_link_text" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
